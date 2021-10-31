@@ -1,6 +1,8 @@
 package stats
 
-import "github.com/scarfase/bank/v2/pkg/types"
+import (
+	"github.com/scarfase/bank/v2/pkg/types"
+)
 
 // Avg рассчитывает среднюю сумму платежа
 func Avg(payments []types.Payment) types.Money {
@@ -38,4 +40,14 @@ func FilterByCategory(payments []types.Payment, category types.Category) []types
 		}
 	}
 	return filtered
+}
+
+// CategoriesTotal возвращает сумму платежей по каждой категории.
+func CategoriesTotal(payments []types.Payment) map[types.Category]types.Money {
+	categories := map[types.Category]types.Money{}
+
+	for _, payment := range payments {
+		categories[payment.Category] += payment.Amount
+	}
+	return categories
 }
