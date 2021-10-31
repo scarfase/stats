@@ -1,5 +1,5 @@
-module github.com/scarfase/stats
+module github.com/scarfase/stats/v2
 
 go 1.17
 
-require github.com/scarfase/bank v0.0.0-20211031060127-2081a807ae26 // indirect
+require github.com/scarfase/bank/v2 v2.0.0
