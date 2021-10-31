@@ -72,3 +72,23 @@ func CategoriesAvg(payments []types.Payment) map[types.Category]types.Money {
 
 	return mapAvg
 }
+
+// PeriodsDynamic сравнивает расходы по категориям за два периода.
+func PeriodsDynamic(first map[types.Category]types.Money, second map[types.Category]types.Money) map[types.Category]types.Money {
+	sum := make(map[types.Category]types.Money)
+
+	for k, v := range first {
+		if v2, ok := second[k]; ok {
+			sum[k] = v2 - v
+		} else {
+			sum[k] = -v
+		}
+	}
+	for k, v := range second {
+		if _, ok := sum[k]; !ok {
+			sum[k] = v
+		}
+	}
+
+	return sum
+}
