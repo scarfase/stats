@@ -1,6 +1,6 @@
 package stats
 
-import "github.com/scarfase/bank/pkg/bank/types"
+import "github.com/scarfase/bank/pkg/types"
 
 // Avg рассчитывает среднюю сумму платежа
 func Avg(payments []types.Payment) types.Money {
